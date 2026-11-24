@@ -1,0 +1,11 @@
+/* App Stylesheet - ZEYARCH Designs */
+
+.zeyarch-app {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #0d0e11;
+  color: #f7f6f2;
+  position: relative;
+  overflow-x: hidden;
+}
+

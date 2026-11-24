@@ -1,0 +1,596 @@
+/* ==========================================================================
+   ZEYARCH Premium Split-Screen Navigation Stylesheet
+   (ABVTEK Architectural Layout Reference)
+   ========================================================================== */
+
+/* ================= 1. CLOSED NAVBAR HEADER ================= */
+.zeyarch-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--site-header-height, 96px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  transition:
+    background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    backdrop-filter 0.4s ease;
+}
+
+.zeyarch-header.transparent,
+.zeyarch-header.scrolled {
+  background-color: transparent !important;
+  border-bottom: 1px solid transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* ================= THEME CONTRAST SYSTEM FOR TRANSPARENT NAVBAR ================= */
+/* 1. Theme Hero (Dark architectural footage on both sides) */
+.zeyarch-header.theme-hero .brand-text {
+  color: #ffffff;
+}
+.zeyarch-header.theme-hero .header-contact-link {
+  color: #ffffff;
+}
+.zeyarch-header.theme-hero .ham-line {
+  background-color: #ffffff;
+}
+.zeyarch-header.theme-hero .header-brand-emblem-btn {
+  opacity: 0.95;
+}
+
+/* 2. Theme Light (Process section: warm ivory background across viewport) */
+.zeyarch-header.theme-light .brand-text {
+  color: #1c1a17;
+}
+.zeyarch-header.theme-light .header-contact-link {
+  color: #1c1a17;
+}
+.zeyarch-header.theme-light .ham-line {
+  background-color: #1c1a17;
+}
+.zeyarch-header.theme-light .header-brand-emblem-btn {
+  opacity: 0.95;
+}
+
+/* 3. Theme Split (Selected Works: 50% left #dbdbe3, 50% right dark photo) */
+.zeyarch-header.theme-split .brand-text {
+  color: #000000;
+}
+.zeyarch-header.theme-split .brand-period {
+  color: #000000;
+}
+.zeyarch-header.theme-split .header-contact-link {
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+.zeyarch-header.theme-split .ham-line {
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.zeyarch-header.theme-split .header-brand-emblem-btn {
+  opacity: 0.95;
+}
+
+@media (max-width: 1024px) {
+  .zeyarch-header.theme-split .ham-line {
+    background-color: #1c1a17;
+    box-shadow: none;
+  }
+  .zeyarch-header.theme-split .header-brand-emblem-btn {
+    opacity: 0.95;
+  }
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LEFT: ZEYARCH Wordmark (38–42px) */
+.brand-link {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.brand-link:hover {
+  opacity: 0.88;
+}
+
+.brand-text {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 2.6vw, 2.5rem); /* ~38–42px */
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: color 0.35s ease;
+}
+
+.brand-period {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 2.6vw, 2.5rem);
+  font-weight: 500;
+  color: var(--color-brand-accent);
+  margin-left: 2px;
+}
+
+/* RIGHT: Group containing CONTACT US + Hamburger Icon */
+.header-right-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 36px);
+}
+
+.header-contact-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem); /* ~15–17px */
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.header-contact-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #c4a480;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header-contact-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Official ZEYARCH Brand Emblem Button (No circular container, pure transparent brand mark) */
+.header-brand-emblem-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  line-height: 0;
+}
+
+.brand-emblem-img {
+  height: 28px;
+  width: auto;
+  max-width: 36px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+}
+
+.header-brand-emblem-btn:hover .brand-emblem-img {
+  transform: scale(1.08);
+}
+
+.header-brand-emblem-btn:active .brand-emblem-img {
+  transform: scale(0.96);
+}
+
+/* Custom Hamburger Icon (40–44px wide) */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.ham-line {
+  display: block;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 1px;
+  transition: width 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.ham-line-1 {
+  width: 42px;
+}
+
+.ham-line-2 {
+  width: 32px;
+}
+
+.hamburger-btn:hover .ham-line-2 {
+  width: 42px;
+}
+
+/* ================= 2. FULL-SCREEN SPLIT-SCREEN NAVIGATION OVERLAY ================= */
+.split-menu-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 10000;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  background-color: #0d0e11;
+}
+
+/* LEFT PANEL — ARCHITECTURAL PHOTOGRAPH (70% width) */
+.split-left-panel {
+  flex: 0 0 70%;
+  width: 70%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.left-panel-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.split-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform, opacity;
+}
+
+.split-image-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 14, 17, 0.5) 0%,
+    rgba(13, 14, 17, 0.1) 35%,
+    rgba(13, 14, 17, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+/* ZEYARCH Wordmark positioned in upper-left corner over photograph */
+.split-left-brand {
+  position: absolute;
+  top: clamp(28px, 3.5vw, 36px);
+  left: clamp(32px, 4vw, 44px);
+  z-index: 10;
+}
+
+.split-brand-anchor {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.split-brand-text {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 2.6vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.split-brand-period {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 2.6vw, 2.5rem);
+  font-weight: 500;
+  color: #c4a480;
+  margin-left: 2px;
+}
+
+/* RIGHT PANEL — NAVIGATION (30% width) */
+.split-right-panel {
+  flex: 0 0 30%;
+  width: 30%;
+  height: 100%;
+  position: relative;
+  background-color: #E3E5E8;
+  color: #22231F;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.25);
+  will-change: transform;
+}
+
+/* Top Area of Right Panel: CONTACT US + Close Icon */
+.split-right-header {
+  height: 96px;
+  flex-shrink: 0;
+  padding: 0 clamp(28px, 3.5vw, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(20px, 2.4vw, 36px);
+}
+
+.split-right-contact {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #22231F;
+  text-decoration: none;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.3s ease;
+}
+
+.split-right-contact::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #22231F;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.split-right-contact:hover::after {
+  transform: scaleX(1);
+}
+
+/* Close Icon ('X') */
+.split-close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.close-line {
+  position: absolute;
+  width: 26px;
+  height: 2px;
+  background-color: #22231F;
+  border-radius: 1px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.close-line-1 {
+  transform: rotate(45deg);
+}
+
+.close-line-2 {
+  transform: rotate(-45deg);
+}
+
+.split-close-btn:hover .close-line-1 {
+  transform: rotate(135deg);
+}
+
+.split-close-btn:hover .close-line-2 {
+  transform: rotate(45deg);
+}
+
+/* Navigation Content Body */
+.split-nav-body {
+  padding: clamp(24px, 3.5vw, 48px) clamp(28px, 3.5vw, 44px) 60px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Small Section Label: NAVIGATION */
+.split-nav-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #7B7F87;
+  margin-bottom: clamp(28px, 3vw, 42px);
+}
+
+/* Vertical Main Navigation Links */
+.split-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 2.5vw, 34px);
+}
+
+.split-nav-item {
+  display: block;
+}
+
+.split-nav-link {
+  font-family: 'Cinzel', 'Italiana', serif;
+  font-size: clamp(1.8rem, 2.3vw, 2.7rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #22231F;
+  text-decoration: none;
+  line-height: 1.25;
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  will-change: transform;
+}
+
+.split-nav-link:hover {
+  transform: translateX(8px);
+  color: #000000;
+}
+
+/* Services item with expandable toggle */
+.services-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.services-icon {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #22231F;
+  margin-left: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* Submenu container */
+.services-submenu {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+}
+
+.services-submenu.expanded {
+  margin-top: 14px;
+  margin-bottom: 8px;
+}
+
+.submenu-list {
+  list-style: none;
+  padding: 0 0 0 16px;
+  margin: 0;
+  border-left: 1px solid rgba(34, 35, 31, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.submenu-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(34, 35, 31, 0.72);
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.submenu-link:hover {
+  color: #22231F;
+  transform: translateX(6px);
+}
+
+/* ================= ACCESSIBILITY & FOCUS ================= */
+.brand-link:focus-visible,
+.header-contact-link:focus-visible,
+.hamburger-btn:focus-visible,
+.split-close-btn:focus-visible,
+.split-nav-link:focus-visible,
+.submenu-link:focus-visible {
+  outline: 2px solid #c4a480;
+  outline-offset: 4px;
+}
+
+/* ================= 3. MOBILE RESPONSIVE ADAPTATION ================= */
+@media (max-width: 1024px) {
+  .zeyarch-header {
+    height: 80px;
+  }
+
+  /* Full-Screen Split adapts into vertical stacked layout */
+  .split-menu-overlay {
+    flex-direction: column;
+  }
+
+  .split-left-panel {
+    flex: 0 0 34vh;
+    width: 100%;
+    height: 34vh;
+  }
+
+  .split-right-panel {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 66vh;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .split-right-header {
+    height: 72px;
+  }
+
+  .split-nav-body {
+    padding: 24px clamp(24px, 5vw, 36px) 44px;
+  }
+
+  .split-nav-link {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .header-contact-link {
+    display: none; /* Keep header clean on small mobile */
+  }
+
+  .split-right-contact {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zeyarch-header,
+  .brand-link,
+  .header-contact-link,
+  .hamburger-btn,
+  .ham-line,
+  .split-nav-link,
+  .split-close-btn,
+  .close-line,
+  .submenu-link {
+    transition: none !important;
+  }
+}

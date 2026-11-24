@@ -1,0 +1,305 @@
+/* =========================================================================
+   ZEYARCH — Project Enquiry Modal Styles
+   Warm Ivory / Beige Editorial Architectural Popup
+   ========================================================================= */
+
+.enquiry-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 10001; /* Above sticky elements, below active nav drawer */
+  background-color: rgba(13, 14, 17, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: modal-fade-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.enquiry-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #f5eae1;
+  color: #1c1a17;
+  border-radius: 4px;
+  padding: clamp(28px, 4.5vh, 44px) clamp(24px, 4vw, 44px);
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.3), 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  animation: modal-scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modal-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Close Icon Button */
+.enquiry-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: rgba(28, 26, 23, 0.6);
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.enquiry-close-btn:hover {
+  background-color: rgba(28, 26, 23, 0.08);
+  color: #1c1a17;
+}
+
+.enquiry-close-btn:focus-visible {
+  outline: 2px solid #9e8668;
+}
+
+.close-symbol {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+/* Modal Header */
+.enquiry-header {
+  margin-bottom: clamp(20px, 3vh, 28px);
+}
+
+.enquiry-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ae5c2a;
+  margin-bottom: 8px;
+}
+
+.enquiry-heading {
+  font-family: 'Italiana', 'Cinzel', serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.35rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #1c1a17;
+  margin: 0 0 8px 0;
+  line-height: 1.15;
+}
+
+.enquiry-subheading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.86rem, 0.95vw, 0.94rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(28, 26, 23, 0.7);
+  margin: 0;
+}
+
+/* Form Layout Grid */
+.enquiry-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.enquiry-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.enquiry-field.full-width {
+  grid-column: span 2;
+}
+
+.enquiry-label-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(28, 26, 23, 0.6);
+}
+
+.req {
+  color: #ae5c2a;
+}
+
+.enquiry-input,
+.enquiry-select {
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(28, 26, 23, 0.18);
+  border-radius: 3px;
+  color: #1c1a17;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.enquiry-input:focus,
+.enquiry-select:focus {
+  border-color: #1c1a17;
+  background-color: #ffffff;
+}
+
+.enquiry-input::placeholder {
+  color: rgba(28, 26, 23, 0.35);
+  font-weight: 300;
+}
+
+.enquiry-field.has-error .enquiry-input,
+.enquiry-field.has-error .enquiry-select {
+  border-color: #d94b4b;
+}
+
+.enquiry-err {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  color: #d94b4b;
+  margin-top: 2px;
+}
+
+/* Phone Input with Country Code */
+.enquiry-phone-wrap {
+  display: flex;
+  gap: 8px;
+}
+
+.enquiry-country-select {
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(28, 26, 23, 0.18);
+  border-radius: 3px;
+  color: #1c1a17;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  padding: 8px 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.phone-text {
+  flex: 1;
+}
+
+.enquiry-textarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+/* Feedback Notice Cards */
+.enquiry-notice-card {
+  padding: 12px 16px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+
+.success-card {
+  background-color: rgba(174, 92, 42, 0.08);
+  border: 1px solid rgba(174, 92, 42, 0.25);
+  color: #1c1a17;
+}
+
+.error-card {
+  background-color: rgba(217, 75, 75, 0.08);
+  border: 1px solid rgba(217, 75, 75, 0.25);
+  color: #d94b4b;
+}
+
+.notice-lead-p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.notice-mailto-btn {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #ae5c2a;
+  text-decoration: underline;
+}
+
+/* Action Button */
+.enquiry-action-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.enquiry-submit-btn {
+  background-color: #1c1a17;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  padding: 13px 28px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  width: 100%;
+}
+
+.enquiry-submit-btn:hover:not(:disabled) {
+  background-color: #2b2723;
+  transform: translateY(-1px);
+}
+
+.enquiry-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .enquiry-modal-box {
+    padding: 28px 20px 24px;
+  }
+
+  .enquiry-form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .enquiry-field.full-width {
+    grid-column: span 1;
+  }
+}

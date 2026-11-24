@@ -1,0 +1,345 @@
+/* ==========================================================================
+   ZEYARCH Cinematic Landscape Video Hero Stylesheet
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #0d0e11;
+  user-select: none;
+}
+
+/* ================= BACKGROUND VIDEO & POSTER LAYER ================= */
+.hero-video-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 2;
+  opacity: 0;
+  transform: translateZ(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.hero-bg-video.loaded {
+  opacity: 1;
+}
+
+.hero-fallback-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.hero-fallback-poster.video-playing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Refined Architectural Scrim ensuring typography legibility while maximizing luminous sunlight & sharpness */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 14, 17, 0.35) 0%,
+    rgba(13, 14, 17, 0.0) 25%,
+    rgba(13, 14, 17, 0.12) 60%,
+    rgba(13, 14, 17, 0.68) 100%
+  );
+  pointer-events: none;
+}
+
+/* ================= HERO SPACER FOR FIXED NAVBAR ================= */
+.hero-nav-spacer {
+  height: 96px;
+  width: 100%;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* ================= HERO CONTENT (LOWER-LEFT COMPOSITION) ================= */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 clamp(24px, 5vw, 64px);
+  max-width: 980px;
+  margin-bottom: clamp(16px, 2.5vw, 36px);
+  pointer-events: none;
+}
+
+/* Eyebrow / Supporting Label */
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.kicker-line {
+  width: 28px;
+  height: 1px;
+  background-color: #c4a480;
+  flex-shrink: 0;
+}
+
+.kicker-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.68rem, 0.85vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #c4a480;
+}
+
+/* Main Editorial Headline */
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #f7f6f2;
+  margin-bottom: 18px;
+  max-width: 860px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Supporting Description */
+.hero-description {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(247, 246, 242, 0.82);
+  max-width: 580px;
+  margin-bottom: 28px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Understated Minimal CTA */
+.hero-cta-wrapper {
+  display: inline-block;
+  pointer-events: all;
+}
+
+.hero-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.82rem, 1vw, 0.92rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f7f6f2;
+  text-decoration: none;
+  position: relative;
+  padding: 4px 0 6px 0;
+  transition: color 0.3s ease;
+}
+
+.hero-cta-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #c4a480;
+  transform: scaleX(0.7);
+  transform-origin: left;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease;
+}
+
+.hero-cta-link:hover::after {
+  transform: scaleX(1);
+  background-color: #ffffff;
+}
+
+.hero-cta-link:hover {
+  color: #ffffff;
+}
+
+.cta-arrow {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-cta-link:hover .cta-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* ================= HERO FOOTER STRIP & SCROLL INDICATOR ================= */
+.hero-footer {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding: 24px clamp(24px, 5vw, 64px) 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+.meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.meta-value {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+
+/* Scroll to Explore Link */
+.hero-scroll-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  pointer-events: all;
+  transition: color 0.3s ease;
+}
+
+.hero-scroll-indicator:hover {
+  color: #ffffff;
+}
+
+.scroll-indicator-arrow {
+  font-size: 0.95rem;
+  display: inline-block;
+  animation: bounceDown 2s infinite ease-in-out;
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* ================= ACCESSIBILITY & FOCUS ================= */
+.hero-cta-link:focus-visible,
+.hero-scroll-indicator:focus-visible {
+  outline: 2px solid #c4a480;
+  outline-offset: 4px;
+}
+
+/* ================= RESPONSIVE BEHAVIOR ================= */
+@media (max-width: 1024px) {
+  .hero-bg-video,
+  .hero-fallback-poster {
+    object-position: center center;
+  }
+
+  .hero-nav-spacer {
+    height: 80px;
+  }
+
+  .hero-footer {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-bg-video,
+  .hero-fallback-poster {
+    object-position: center center;
+  }
+
+  .hero-section {
+    min-height: 560px;
+  }
+
+  .hero-nav-spacer {
+    height: 74px;
+  }
+
+  .hero-content {
+    padding: 0 20px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 7.5vw, 3.2rem);
+    margin-bottom: 16px;
+  }
+
+  .hero-description {
+    font-size: 0.88rem;
+    margin-bottom: 22px;
+  }
+
+  .hero-footer {
+    padding: 20px;
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+  }
+
+  .hero-scroll-indicator {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-video,
+  .hero-fallback-poster,
+  .hero-cta-link::after,
+  .cta-arrow,
+  .scroll-indicator-arrow {
+    transition: none !important;
+    animation: none !important;
+  }
+}

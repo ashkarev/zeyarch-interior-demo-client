@@ -1,0 +1,514 @@
+/* =========================================================================
+   ZEYARCH — FINAL CONTACT & GIANT TYPOGRAPHIC FOOTER SECTION
+   Bold, Minimal, High-End Architectural Studio Aesthetic
+   ========================================================================= */
+
+.contact-footer-section {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - var(--site-header-height));
+  min-height: calc(100svh - var(--site-header-height));
+  scroll-margin-top: var(--site-header-height);
+  background-color: #0a0b0e;
+  color: #ffffff;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ================= 1. CONTACT SECTION ================= */
+.contact-container {
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: clamp(48px, 7vh, 80px) clamp(24px, 5vw, 72px) clamp(80px, 10vh, 120px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(48px, 6vw, 108px);
+  box-sizing: border-box;
+}
+
+/* Left Column — Editorial Heading & Studio Coordinates */
+.contact-left-col {
+  flex: 0 1 48%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: clamp(20px, 3vh, 32px);
+}
+
+.contact-label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-brand-accent);
+  display: inline-block;
+}
+
+.contact-label-text {
+  font-family: var(--font-sans);
+  font-size: clamp(0.7rem, 0.8vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contact-heading {
+  font-family: var(--font-sans);
+  font-size: clamp(2.4rem, 4.4vw, 4.4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 clamp(36px, 5vh, 56px) 0;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+}
+
+.contact-meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.8vh, 30px);
+  padding-top: clamp(24px, 3.5vh, 36px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  max-width: 480px;
+}
+
+.contact-meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-meta-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  font-weight: 500;
+}
+
+.contact-meta-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.96rem, 1.1vw, 1.15rem);
+  font-weight: 300;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  width: fit-content;
+}
+
+.contact-meta-link:hover {
+  color: #c4a480;
+}
+
+.contact-meta-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}
+
+/* Right Column — Minimal Text-Based Architectural Form */
+.contact-right-col {
+  flex: 0 1 52%;
+  max-width: 680px;
+  width: 100%;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.2vh, 36px);
+  width: 100%;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.form-field:focus-within {
+  border-bottom-color: #ffffff;
+}
+
+.form-field.has-error {
+  border-bottom-color: #e06c75;
+}
+
+.field-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.68rem, 0.76vw, 0.74rem);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.3s ease;
+}
+
+.form-field:focus-within .field-label {
+  color: #ffffff;
+}
+
+.field-req {
+  color: #c4a480;
+}
+
+.field-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.1vw, 1.14rem);
+  font-weight: 300;
+  line-height: 1.5;
+  padding: 4px 0 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field-input::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+  font-weight: 300;
+}
+
+.field-textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.field-error-msg {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  color: #e06c75;
+  margin-top: 2px;
+}
+
+/* Phone Field with Country Dial Code Selector */
+.phone-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.country-select {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.85rem, 0.95vw, 0.98rem);
+  font-weight: 400;
+  padding: 4px 6px 6px 0;
+  cursor: pointer;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.country-select option {
+  background-color: #16181d;
+  color: #ffffff;
+}
+
+.phone-text-input {
+  flex: 1;
+}
+
+/* Staged Feedback Box */
+.form-notice-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+.notice-staged {
+  background: rgba(196, 164, 128, 0.08);
+  border: 1px solid rgba(196, 164, 128, 0.28);
+  color: #ffffff;
+}
+
+.notice-alert {
+  background: rgba(224, 108, 117, 0.08);
+  border: 1px solid rgba(224, 108, 117, 0.28);
+  color: #ffffff;
+}
+
+.notice-icon {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #c4a480;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.notice-alert .notice-icon {
+  color: #e06c75;
+}
+
+.notice-inner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notice-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.notice-mailto-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #c4a480;
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+  width: fit-content;
+}
+
+.notice-mailto-link:hover {
+  opacity: 0.8;
+}
+
+/* Submit Control Row */
+.form-submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.form-privacy-note {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.35);
+  max-width: 320px;
+}
+
+.contact-submit-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+
+.contact-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.96rem, 1.1vw, 1.12rem);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.btn-arrow {
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+}
+
+.contact-submit-btn:hover:not(:disabled) .btn-arrow {
+  transform: translate(4px, -4px);
+}
+
+.contact-submit-btn:hover:not(:disabled) {
+  color: #c4a480;
+}
+
+/* ================= 2. GIANT TYPOGRAPHIC FOOTER ================= */
+.footer-giant-canvas {
+  width: 100%;
+  padding: clamp(60px, 8vh, 100px) clamp(24px, 5vw, 72px) clamp(40px, 5vh, 60px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Massive Signature Wordmark */
+.giant-wordmark-container {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  user-select: none;
+  margin-bottom: clamp(36px, 5vh, 56px);
+  will-change: transform, opacity;
+}
+
+.giant-wordmark-text {
+  font-family: 'Cinzel', 'Italiana', serif;
+  font-size: clamp(3.8rem, 16vw, 18.5rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 0.85;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.giant-wordmark-period {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3.8rem, 16vw, 18.5rem);
+  font-weight: 500;
+  color: #c4a480;
+  margin-left: 4px;
+  line-height: 0.85;
+}
+
+/* Compact Horizontal Footer Navigation */
+.footer-nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: clamp(36px, 5vh, 52px);
+}
+
+.footer-nav-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.2vw, 32px);
+}
+
+.footer-nav-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.72rem, 0.82vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 4px 0;
+}
+
+.footer-nav-link:hover {
+  color: #ffffff;
+}
+
+.footer-nav-sep {
+  color: rgba(255, 255, 255, 0.22);
+  font-size: 0.6rem;
+}
+
+/* Bottom Metadata Bar */
+.footer-meta-bar {
+  width: 100%;
+  max-width: 1680px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: clamp(20px, 3vh, 32px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-copyright {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+
+.footer-studio-tagline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+@media (max-width: 1024px) {
+  .contact-container {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .contact-left-col,
+  .contact-right-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .footer-meta-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-container {
+    padding: 72px 20px 60px;
+    gap: 44px;
+  }
+
+  .contact-heading {
+    font-size: clamp(2rem, 9.5vw, 2.8rem);
+  }
+
+  .form-submit-row {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .contact-submit-btn {
+    align-self: flex-end;
+  }
+
+  .giant-wordmark-container {
+    margin-bottom: 28px;
+  }
+
+  .footer-nav-list {
+    gap: 12px 18px;
+  }
+
+  .footer-nav-sep {
+    display: none;
+  }
+}

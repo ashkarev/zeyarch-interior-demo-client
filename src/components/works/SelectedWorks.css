@@ -1,0 +1,252 @@
+/* =========================================================================
+   ZEYARCH — SECTION 03: SELECTED WORKS
+   Warm Beige (#f7f5f0) Editorial Split-Screen Architectural Showcase
+   (Matching Section 02 Background Consistency Exactly)
+   ========================================================================= */
+
+.works-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-beige, #f7f5f0);
+  color: #1c1a17;
+  overflow: clip;
+  scroll-margin-top: var(--site-header-height);
+}
+
+@media (min-width: 1024px) {
+  .works-section {
+    height: 350vh; /* Smooth scrub scroll distance */
+  }
+}
+
+/* ================= DESKTOP PINNED 100vh STAGE ================= */
+.works-pin-stage {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .works-pin-stage {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    overflow: hidden;
+    background-color: var(--color-bg-beige, #f7f5f0);
+  }
+}
+
+/* ================= LEFT INFORMATION PANEL (50vw width) ================= */
+.works-left-col {
+  width: 50vw;
+  flex: 0 0 50vw;
+  height: 100vh;
+  height: 100svh;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg-beige, #f7f5f0);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(96px, 12vh, 128px) clamp(36px, 5vw, 76px) clamp(36px, 5vh, 52px);
+  z-index: 5;
+}
+
+.works-left-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 540px;
+}
+
+/* Project Title (Refined Serif Heading) */
+.works-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 3.6vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #1c1a17;
+  margin: 0 0 clamp(8px, 1.2vh, 12px) 0;
+}
+
+/* Location & Category Metadata Block */
+.works-meta-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-bottom: clamp(16px, 2.4vh, 22px);
+}
+
+.works-location {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.72rem, 0.8vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #736b63;
+  margin: 0;
+}
+
+.works-meta-divider {
+  color: rgba(28, 26, 23, 0.3);
+  font-size: 0.7rem;
+}
+
+.works-category {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.7rem, 0.76vw, 0.76rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9e8668;
+  margin: 0;
+}
+
+/* Project Description (Readable Sentence Case, Comfortable Line Height) */
+.works-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.88rem, 0.98vw, 1.02rem);
+  font-weight: 300;
+  line-height: 1.72;
+  color: rgba(28, 26, 23, 0.78);
+  margin: 0 0 clamp(20px, 3vh, 32px) 0;
+  max-width: 490px;
+}
+
+/* Secondary Project Photograph Showcase (Clean Position Below Text, Zero Overlap) */
+.works-secondary-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: clamp(260px, 23vw, 360px);
+}
+
+.works-secondary-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px -8px rgba(28, 26, 23, 0.12);
+  background-color: #e6e2d9;
+}
+
+.works-secondary-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.6s ease;
+  transform: scale(1.03);
+}
+
+.works-secondary-img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.works-secondary-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 26, 23, 0.55);
+}
+
+.works-room-title {
+  font-weight: 500;
+  color: #1c1a17;
+}
+
+.works-room-num {
+  font-weight: 400;
+}
+
+/* ================= RIGHT ARCHITECTURAL PHOTOGRAPH (50vw width) ================= */
+.works-right-col {
+  width: 50vw;
+  flex: 0 0 50vw;
+  height: 100vh;
+  height: 100svh;
+  position: relative;
+  overflow: hidden;
+  background-color: #0d0e11;
+}
+
+.works-photo-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: clip-path, opacity;
+}
+
+.works-full-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ================= MOBILE VIEW (< 1024px) ================= */
+.works-mobile-view {
+  display: block;
+  width: 100%;
+  background-color: var(--color-bg-beige, #f7f5f0);
+  padding: 100px 24px 64px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .works-mobile-view {
+    display: none;
+  }
+}
+
+.works-mobile-inner {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.works-mobile-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-top: 36px;
+}
+
+.works-mobile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.works-mobile-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(28, 26, 23, 0.08);
+}
+
+.works-mobile-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 26, 23, 0.6);
+}

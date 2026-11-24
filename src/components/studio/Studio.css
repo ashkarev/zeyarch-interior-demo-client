@@ -1,0 +1,570 @@
+/* =========================================================================
+   ZEYARCH — SECTION 05: THE STUDIO
+   Refined Art-Directed Architectural Editorial Composition & Slideshow
+   ========================================================================= */
+
+.studio-section {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - var(--site-header-height));
+  min-height: calc(100svh - var(--site-header-height));
+  scroll-margin-top: var(--site-header-height);
+  background-color: var(--color-bg-beige, #f7f5f0); /* Exact Section 02 Warm Beige Palette */
+  color: #1c1a17;
+  padding: clamp(48px, 6vh, 72px) clamp(24px, 4.5vw, 68px) clamp(80px, 10vh, 120px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Subtle Organic Dappled Foliage Shadow (Top Right Background) */
+.studio-foliage-shadow {
+  position: absolute;
+  top: -60px;
+  right: 10%;
+  width: 620px;
+  height: 490px;
+  background: radial-gradient(
+    ellipse at 60% 30%,
+    rgba(142, 126, 112, 0.12) 0%,
+    rgba(168, 150, 134, 0.06) 42%,
+    transparent 72%
+  );
+  pointer-events: none;
+  filter: blur(30px);
+  z-index: 1;
+}
+
+.studio-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(48px, 5.5vw, 96px);
+}
+
+/* ================= LEFT VISUAL & EDITORIAL BLOCK ================= */
+.studio-left-block {
+  flex: 0 1 58%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Top Intro Area: Heading & Intro Paragraph Row */
+.studio-top-intro-area {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: clamp(24px, 3.2vh, 36px);
+}
+
+/* Header & Intro Row: Clean, Non-Overlapping Alignment */
+.studio-header-intro-row {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(24px, 3.2vw, 48px);
+  margin-bottom: clamp(20px, 2.8vh, 28px);
+}
+
+.studio-heading-col {
+  flex-shrink: 0;
+}
+
+.studio-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(3.8rem, 6vw, 6.4rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  color: #1c1a17;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.studio-intro-col {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(16px, 1.8vw, 22px);
+  max-width: clamp(260px, 24vw, 320px);
+  margin-bottom: 8px;
+}
+
+.studio-intro-rule {
+  width: 1px;
+  background-color: rgba(28, 26, 23, 0.22);
+  flex-shrink: 0;
+}
+
+.studio-intro-text {
+  font-family: var(--font-sans);
+  font-size: clamp(0.88rem, 0.96vw, 1rem);
+  font-weight: 400;
+  line-height: 1.62;
+  color: rgba(28, 26, 23, 0.78);
+  margin: 0;
+}
+
+/* Meaningful ZEYARCH Narrative Block */
+.studio-narrative-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 680px;
+  padding-top: clamp(12px, 1.6vh, 18px);
+  border-top: 1px solid rgba(28, 26, 23, 0.1);
+}
+
+.studio-supporting-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 1.7vw, 1.85rem);
+  font-weight: 400;
+  color: #1c1a17;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.studio-narrative-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.86rem, 0.92vw, 0.98rem);
+  font-weight: 400;
+  line-height: 1.68;
+  color: rgba(28, 26, 23, 0.74);
+  margin: 0;
+}
+
+/* ================= ARCHITECTURAL IMAGERY & SLIDESHOW AREA ================= */
+.studio-imagery-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  margin-top: clamp(24px, 3.5vh, 40px);
+}
+
+/* Main Studio Photography Frame with Architectural Arch Cut */
+.studio-main-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9.6;
+  border-radius: 0 clamp(140px, 17vw, 210px) 0 0;
+  overflow: hidden;
+  box-shadow: 0 20px 48px -14px rgba(28, 26, 23, 0.12);
+  background-color: #1a1815;
+  will-change: clip-path, transform;
+}
+
+/* Slideshow Track & Crossfade Slides */
+.studio-slideshow-track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.studio-slide-item {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    clip-path 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  clip-path: inset(0% 0% 0% 0%);
+  overflow: hidden;
+}
+
+.studio-slide-item.slide-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.studio-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.04);
+  transition: transform 4.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.studio-slide-item.slide-active .studio-slide-img {
+  transform: scale(1);
+}
+
+/* Subtle Editorial Caption Overlay along Bottom */
+.studio-slide-caption-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px clamp(18px, 2.5vw, 28px);
+  background: linear-gradient(
+    to top,
+    rgba(14, 13, 11, 0.72) 0%,
+    rgba(14, 13, 11, 0.3) 60%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f7f6f2;
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 0.82vw, 0.82rem);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.slide-cap-title {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.slide-cap-sep {
+  opacity: 0.6;
+}
+
+.slide-cap-desc {
+  font-weight: 400;
+  opacity: 0.88;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Slideshow Controls (Top Right of Main Frame) */
+.studio-slideshow-controls {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(14, 13, 11, 0.58);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 20px;
+  z-index: 10;
+  user-select: none;
+}
+
+.slideshow-arrow-btn {
+  background: transparent;
+  border: none;
+  color: #f7f6f2;
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 2px 4px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.slideshow-arrow-btn:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.slideshow-pagination {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #f7f6f2;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.pagination-current {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.pagination-sep {
+  opacity: 0.45;
+}
+
+.pagination-total {
+  opacity: 0.75;
+}
+
+/* Slideshow Dots Indicator (Bottom Right) */
+.studio-slideshow-dots {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.slideshow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.slideshow-dot.active-dot {
+  background-color: var(--color-brand-accent, #b1394c);
+  transform: scale(1.3);
+}
+
+/* Subtle Crimson Brand Accent Block */
+.studio-terracotta-accent {
+  position: absolute;
+  bottom: -11px;
+  left: clamp(48px, 6vw, 76px);
+  width: clamp(68px, 7vw, 92px);
+  height: 18px;
+  background-color: var(--color-brand-accent, #b1394c);
+  z-index: 4;
+}
+
+/* Concentric Architectural Arch Stroke */
+.studio-arch-outline {
+  position: absolute;
+  top: -34px;
+  right: -28px;
+  width: clamp(180px, 20vw, 250px);
+  height: clamp(180px, 20vw, 250px);
+  border-top: 1px solid rgba(28, 26, 23, 0.16);
+  border-right: 1px solid rgba(28, 26, 23, 0.16);
+  border-top-right-radius: clamp(180px, 20vw, 250px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Floating Detail Photograph (Synchronized Slideshow) */
+.studio-floating-card {
+  position: absolute;
+  top: -38px;
+  right: clamp(12px, 1.8vw, 28px);
+  width: clamp(125px, 11.5vw, 160px);
+  aspect-ratio: 3 / 4.1;
+  z-index: 5;
+  overflow: hidden;
+  background-color: #1a1815;
+  box-shadow: 0 16px 36px -10px rgba(28, 26, 23, 0.15);
+}
+
+.studio-floating-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.studio-floating-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    clip-path 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  clip-path: inset(0% 0% 0% 0%);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.studio-floating-slide.slide-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.studio-floating-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.05);
+  transition: transform 4.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.studio-floating-slide.slide-active .studio-floating-img {
+  transform: scale(1);
+}
+
+/* ================= RIGHT COLUMN — OUR DESIGN ETHOS ================= */
+.studio-right-block {
+  flex: 0 1 38%;
+  max-width: 480px;
+  margin-top: clamp(16px, 2.5vh, 36px);
+  display: flex;
+  flex-direction: column;
+}
+
+.studio-ethos-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: clamp(24px, 3.5vh, 36px);
+}
+
+.studio-ethos-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 2.3vw, 2.45rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #1c1a17;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.studio-ethos-rule {
+  height: 1px;
+  width: clamp(48px, 6vw, 84px);
+  background-color: rgba(28, 26, 23, 0.22);
+  display: inline-block;
+}
+
+.studio-ethos-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.studio-ethos-item {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(18px, 2.2vw, 28px);
+  padding: clamp(20px, 2.8vh, 32px) 0;
+  border-bottom: 1px solid rgba(28, 26, 23, 0.08);
+}
+
+.studio-ethos-item:first-child {
+  padding-top: 0;
+}
+
+.studio-ethos-item:last-child {
+  border-bottom: none;
+}
+
+.ethos-icon-col {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1c1a17;
+}
+
+.ethos-svg {
+  width: 32px;
+  height: 32px;
+}
+
+.ethos-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ethos-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 1.55vw, 1.7rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #1c1a17;
+  margin: 0;
+}
+
+.ethos-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.84rem, 0.9vw, 0.94rem);
+  font-weight: 400;
+  line-height: 1.62;
+  color: rgba(28, 26, 23, 0.72);
+  margin: 0;
+}
+
+/* ================= RESPONSIVE BEHAVIOR ================= */
+@media (max-width: 1024px) {
+  .studio-container {
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .studio-left-block {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .studio-right-block {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  .studio-imagery-wrap {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .studio-section {
+    padding: 72px 20px 80px;
+  }
+
+  .studio-header-intro-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .studio-intro-col {
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+
+  .studio-floating-card {
+    display: none;
+  }
+
+  .studio-arch-outline {
+    display: none;
+  }
+
+  .studio-main-frame {
+    aspect-ratio: 16 / 10.5;
+    border-radius: 0 clamp(80px, 20vw, 120px) 0 0;
+  }
+
+  .studio-terracotta-accent {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-slide-item,
+  .studio-floating-slide {
+    transition: opacity 0.2s linear !important;
+  }
+
+  .studio-slide-img,
+  .studio-floating-img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+

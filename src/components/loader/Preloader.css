@@ -1,0 +1,147 @@
+/* ZEYARCH Preloader Stylesheet */
+
+.zeyarch-preloader-root {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: all;
+}
+
+.zeyarch-preloader-root.uninteractive {
+  pointer-events: none;
+}
+
+/* 1. White backdrop layer: starts at opacity 1, dissolved by GSAP during Stage D */
+.preloader-white-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 1;
+  will-change: opacity;
+}
+
+/* 2. Foreground Stage containing wordmark, center square, and bottom statement */
+.preloader-foreground-stage {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Wordmark Text Elements:
+   Managed by GSAP with xPercent and yPercent for zero transform collisions.
+*/
+.preloader-split-text {
+  position: absolute;
+  top: 50%;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.2rem, 1.8vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: #000000;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+  z-index: 20;
+  will-change: left, opacity, transform;
+}
+
+.preloader-split-text.left {
+}
+
+.preloader-split-text.right {
+}
+
+/* Exact Center Square:
+   - Exactly 50% viewport width
+   - Exactly 50% viewport height
+   - Square aspect ratio (1:1)
+   - Approximately 13vw on desktop
+   - Approximately 34vw on mobile
+   - object-fit: cover
+   - Never moves, scales, or resizes
+*/
+.preloader-center-square {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(140px, 13vw, 240px);
+  height: clamp(140px, 13vw, 240px);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  z-index: 15;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  background-color: #0f1012;
+  border-radius: 0px;
+  will-change: opacity;
+}
+
+.preloader-square-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: opacity;
+}
+
+@keyframes crossfadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Bottom Text Statement in Two Centered Lines */
+.preloader-bottom-statement {
+  position: absolute;
+  bottom: clamp(32px, 7.5vh, 65px);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 20;
+  pointer-events: none;
+  width: 90%;
+  max-width: 700px;
+  will-change: opacity;
+}
+
+.preloader-bottom-statement p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.64rem, 0.74vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  line-height: 1.65;
+  color: #000000;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .preloader-split-text {
+    font-size: clamp(1rem, 4.2vw, 1.35rem);
+    letter-spacing: 0.12em;
+  }
+
+  .preloader-center-square {
+    width: clamp(120px, 34vw, 170px);
+    height: clamp(120px, 34vw, 170px);
+  }
+
+  .preloader-bottom-statement p {
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+  }
+}
